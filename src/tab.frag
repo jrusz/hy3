@@ -12,6 +12,7 @@ uniform sampler2D blurTex;
 
 varying highp vec2 pixCoord;
 varying highp vec2 monitorTexCoord;
+varying highp vec2 blurTexCoord;
 
 void main() {
 	float opacityMul = opacity;
@@ -58,7 +59,7 @@ void main() {
 	}
 
 	if (applyBlur && gl_FragColor.a != 1.0) {
-		gl_FragColor = gl_FragColor + texture2D(blurTex, monitorTexCoord) * (1.0 - gl_FragColor.a);
+		gl_FragColor = gl_FragColor + texture2D(blurTex, blurTexCoord) * (1.0 - gl_FragColor.a);
 	}
 
 	gl_FragColor *= opacityMul;

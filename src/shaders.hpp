@@ -10,6 +10,7 @@ public:
 		SP<CShader> program;
 		GLint proj;
 		GLint monitorSize;
+		GLint blurTexSize;
 		GLint pixelOffset;
 		GLint pixelSize;
 		GLint applyBlur;

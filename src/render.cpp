@@ -38,9 +38,7 @@ void Hy3Render::renderTab(
 			Math::invertTransform(g_pHyprRenderer->m_renderData.pMonitor->m_transform)
 	);
 
-	Hyprutils::Math::eTransform transform = monitor_inverted;
-
-	auto glMatrix = g_pHyprRenderer->projectBoxToTarget(monitorBox, transform);
+	auto glMatrix = g_pHyprRenderer->projectBoxToTarget(monitorBox, monitor_inverted);
 
 	g_pHyprOpenGL->useShader(shader.program);
 
@@ -87,6 +85,8 @@ void Hy3Render::renderTab(
 	}
 
 	GLCALL(glUniform2f(shader.monitorSize, monitorSize.x, monitorSize.y));
+	const auto& blurTexSize = rdata.pMonitor->m_pixelSize;
+	GLCALL(glUniform2f(shader.blurTexSize, blurTexSize.x, blurTexSize.y));
 	GLCALL(glUniform2f(shader.pixelOffset, rbox.x, rbox.y));
 	GLCALL(glUniform2f(shader.pixelSize, rbox.w, rbox.h));
 	GLCALL(glUniform1f(shader.opacity, opacity));

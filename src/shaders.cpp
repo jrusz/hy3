@@ -17,6 +17,7 @@ Hy3Shaders::Hy3Shaders() {
 		auto program = s.program->program();
 		s.proj = glGetUniformLocation(program, "proj");
 		s.monitorSize = glGetUniformLocation(program, "monitorSize");
+		s.blurTexSize = glGetUniformLocation(program, "blurTexSize");
 		s.pixelOffset = glGetUniformLocation(program, "pixelOffset");
 		s.pixelSize = glGetUniformLocation(program, "pixelSize");
 		s.applyBlur = glGetUniformLocation(program, "applyBlur");
